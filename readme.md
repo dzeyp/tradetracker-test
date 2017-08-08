@@ -9,6 +9,7 @@
 - Start by cloning the repository
     ```
     $ git clone https://github.com/dzeyp/tradetracker-test.git
+    $ cd tradetracker-test
     ```
 - [Check laravel 5.4 requirements](https://laravel.com/docs/5.4/installation#installation)
 - Install all back-end dependencies
