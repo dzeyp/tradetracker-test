@@ -1,3 +1,11 @@
-- composer install
-- npm install
-- sudo a2enmod rewrite
+Back-end
+- check laravel 5.4 requirements https://laravel.com/docs/5.4/installation#installation
+- install all back-end dependencies e.g. composer install
+- directories within the "storage" and the "bootstrap/cache" directories should be writable by your web server or Laravel will not run.
+- rename .env.example to .env
+- generate key e.g. sudo php artisan key:generate
+- make sure mod_rewrite is enabled in apache e.g. sudo a2enmod rewrite
+
+Front-end
+- you must first ensure that Node.js and NPM are installed on your machine.
+- install all front-end dependencies e.g. sudo npm install

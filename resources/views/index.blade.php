@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Laravel</title>
+        <title>TradeTracker Test</title>
 
         <link rel="stylesheet" href="css/app.css">
 
@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-sm-2">
                                 <button class="btn btn-primary" v-if="buttonState == 'enabled'" v-on:click="processXml">Process XML</button>
-                                <button class="btn btn-danger" disabled='disabled' v-if="buttonState == 'inprogress'" v-on:click="clearXml">Processing...</button>
+                                <button class="btn btn-danger" disabled='disabled' v-if="buttonState == 'inprogress'">Processing...</button>
                             </div>
                         </div>
                     </form>
@@ -50,7 +50,7 @@
                                         <div v-else-if="key == 'description'">
                                             <p v-if="entry[key].length > 500">
                                                 @{{ entry[key] | truncate }}
-                                                <a href="#" @click="updateModal(index)">read more</a>
+                                                <a @click="updateModal(index)">read more</a>
                                             </p>
                                             <p v-else>
                                                 @{{ entry[key] }}

@@ -11,10 +11,17 @@ var vueForm = new Vue({
             this.buttonState = 'inprogress';
             productGrid.gridData = [];
             xhr = new XMLHttpRequest();
-            xhr.previous_text = '';
+            xhr.previousText = '';
+
+            // this is called when output is detected from back-end stream
             xhr.onreadystatechange = function() {
+                // if currently processing request
                 if (xhr.readyState == 3) {
-                    var newResponse = xhr.responseText.substring(xhr.previous_text.length);
+                    // get the new response by omitting the previous response
+                    var newResponse = xhr.responseText.substring(xhr.previousText.length);
+
+                    // since response text can contain multiple json (e.g. {json1: json1}{json2: json2}),
+                    // replace the string in between multiple json for easy splitting below
                     newResponse = newResponse.replace(/}{/g, '}},{{');
 
                     newResponse.split('},{').forEach(function(product) {
@@ -31,8 +38,10 @@ var vueForm = new Vue({
                         });
                     });
                                 
-                    xhr.previous_text = xhr.responseText;
+                    xhr.previousText = xhr.responseText;
                 }
+
+                // if request process is done
                 if (xhr.readyState == 4) {
                     if ( xhr.status != 200 ) {
                         productGrid.gridData = [];
@@ -41,7 +50,7 @@ var vueForm = new Vue({
                         alert('[XHR] Fatal Error.');
                     }
 
-                    var newResponse = xhr.responseText.substring(xhr.previous_text.length);
+                    var newResponse = xhr.responseText.substring(xhr.previousText.length);
                     newResponse = newResponse.replace(/}{/g, '}},{{');
 
                     newResponse.split('},{').forEach(function(product) {
