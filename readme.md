@@ -35,7 +35,7 @@
 
 # Additional Information
 - Apache webserver is used for development and testing
-- Just use the homepage to test it e.g. http://localhost/tradetracker/public/
+- Just use the homepage to test it e.g. http://localhost/tradetracker-test/public/
 - Tested in Chrome only, Ubuntu 16.04 OS
 - The solution can't handle the entire XML example given. It will experience browser crash. You can try to limit the request. :(
 
